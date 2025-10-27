@@ -1,0 +1,25 @@
+                                        // SHOW DI APARTMENT
+
+// card degli appartamenti
+.my_card {
+    width: calc((100% / 4) - 27px);
+}
+.image-mini {
+    overflow: hidden;
+    border: 1px solid #fff;
+    border-radius: 7px;
+    cursor: pointer;
+    img {
+        transition: transform 0.7s ease;
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+
+}
+
+
+// prove griglia 
+// grid-template-columns: repeat(10, 1fr);      componente genitore
+// grid-column: span 2;     componente figlio      spazio orizzontale
+// grid-row: span 2;        componente figlio       spazio verticale

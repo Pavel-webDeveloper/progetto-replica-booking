@@ -1,4 +1,21 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+.my_card {
+  width: calc(25% - 27px);
+}
+
+.image-mini {
+  overflow: hidden;
+  border: 1px solid #fff;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.image-mini img {
+  transition: transform 0.7s ease;
+}
+.image-mini img:hover {
+  transform: scale(1.2);
+}
+
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

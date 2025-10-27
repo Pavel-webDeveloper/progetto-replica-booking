@@ -19,7 +19,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,4 +29,19 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+});
+
+
+// aggiungi immagini nel edit di apartment
+document.addEventListener('DOMContentLoaded', function () {
+    const button = document.getElementById('add-image');
+    const inputs = document.querySelectorAll('.image-input');
+    let visibleCount = 1;
+
+    button?.addEventListener('click', function () {
+        if (visibleCount < inputs.length) {
+            inputs[visibleCount].style.display = 'block';
+            visibleCount++;
+        }
+    });
 });

@@ -31,10 +31,26 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    @auth
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto">
+                            <li  class="nav-item"><a href="{{ route('admin.apartments.index') }}" class="nav-link">Appartamenti</a></li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Categories
+                                </a>
 
-                    </ul>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @foreach ($listaCategorie as $cat)
+                                        <a class="dropdown-item" href="{{ route('admin.categories.show', $cat->id) }}">
+                                            {{$cat->nome}}
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </li>
+                            @yield('menuDinamic')
+                        </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -76,5 +92,6 @@
             @yield('content')
         </main>
     </div>
+    @stack('scripts')
 </body>
 </html>

@@ -1,0 +1,88 @@
+1 categoria
+2 immagini
+3 PROPRIETà 
+
+//fatto.. creati model e migration ora bisogna creare i controller
+
+4 immagini-PROPRIETà
+5 prenotazioni
+6 recensioni 
+
+
+funzione disponibile nella classe appartamento
+
+public function èDisponibile($dataInizio, $dataFine)
+{
+    return !$this->prenotazioni()
+        ->where(function ($query) use ($dataInizio, $dataFine) {
+            $query->where(function ($q) use ($dataInizio, $dataFine) {
+                $q->whereBetween('data_inizio', [$dataInizio, $dataFine])
+                  ->orWhereBetween('data_fine', [$dataInizio, $dataFine])
+                  ->orWhere(function ($q2) use ($dataInizio, $dataFine) {
+                      $q2->where('data_inizio', '<=', $dataInizio)
+                         ->where('data_fine', '>=', $dataFine);
+                  });
+            });
+        })
+        ->exists();
+}
+
+
+public function èDisponibile($dataInizio, $dataFine)
+{
+    return !$this->prenotazioni()
+        ->where(function ($prenotazioni) use ($dataInizio, $dataFine) {
+            $prenotazioni->whereBetween('data_inizio', [$dataInizio, $dataFine])
+                         ->orWhereBetween('data_fine', [$dataInizio, $dataFine])
+                         ->orWhere(function ($copreInteroPeriodo) use ($dataInizio, $dataFine) {
+                             $copreInteroPeriodo->where('data_inizio', '<=', $dataInizio)
+                                                ->where('data_fine', '>=', $dataFine);
+                         });
+        })
+        ->exists();
+}
+
+
+🧠 Cosa fa ogni parte
+$this->prenotazioni() → prende tutte le prenotazioni dell'appartamento.
+
+where(...) → cerca prenotazioni che si sovrappongono al periodo richiesto.
+
+whereBetween(...) → controlla se la prenotazione inizia o finisce dentro l'intervallo.
+
+orWhere(...) → aggiunge condizioni alternative.
+
+exists() → restituisce true se almeno una prenotazione è trovata.
+
+! → nega il risultato: quindi la funzione restituisce true solo se non ci sono sovrapposizioni.
+
+
+
+
+slug e duplicati nel model
+
+class Appartamento extends Model
+{
+    protected static function boot()
+    {
+        parent::boot(); // chiama il boot della classe base Model
+
+        static::creating(function ($appartamento) {
+            $baseSlug = Str::slug($appartamento->titolo);
+            $slug = $baseSlug;
+            $count = 1;
+
+            while (App\Models\Appartamento::where('slug', $slug)->exists()) {
+                $slug = $baseSlug . '-' . $count++;
+            }
+
+            $appartamento->slug = $slug;
+        });
+    }
+}
+
+
+
+static	Metodo che appartiene alla classe, non all'istanza
+boot()	Metodo speciale che Laravel chiama per inizializzare il modello
+creating	Evento Eloquent che si attiva prima di salvare un nuovo record
