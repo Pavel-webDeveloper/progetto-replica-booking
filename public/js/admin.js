@@ -49343,9 +49343,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\UTENTE\Desktop\Pavel\developer\corso_boolean\2_Back_end\php\Framework\Laravel\progetto-finale-booking\resources\js\admin.js */"./resources/js/admin.js");
-__webpack_require__(/*! C:\Users\UTENTE\Desktop\Pavel\developer\corso_boolean\2_Back_end\php\Framework\Laravel\progetto-finale-booking\resources\sass\admin.scss */"./resources/sass/admin.scss");
-module.exports = __webpack_require__(/*! C:\Users\UTENTE\Desktop\Pavel\developer\corso_boolean\2_Back_end\php\Framework\Laravel\progetto-finale-booking\resources\sass\front.scss */"./resources/sass/front.scss");
+__webpack_require__(/*! C:\Users\pavel\Desktop\dev\2_back-end\PHP\framework\Laravel\progetti\progetto-replica-booking\resources\js\admin.js */"./resources/js/admin.js");
+__webpack_require__(/*! C:\Users\pavel\Desktop\dev\2_back-end\PHP\framework\Laravel\progetti\progetto-replica-booking\resources\sass\admin.scss */"./resources/sass/admin.scss");
+module.exports = __webpack_require__(/*! C:\Users\pavel\Desktop\dev\2_back-end\PHP\framework\Laravel\progetti\progetto-replica-booking\resources\sass\front.scss */"./resources/sass/front.scss");
 
 
 /***/ })

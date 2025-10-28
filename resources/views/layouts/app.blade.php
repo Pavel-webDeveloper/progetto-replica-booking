@@ -41,7 +41,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @foreach ($listaCategorie as $cat)
+                                    {{-- variabile settata in appServiceProvider --}}
+                                    @foreach ($listaDiCategorie as $cat)
                                         <a class="dropdown-item" href="{{ route('admin.categories.show', $cat->id) }}">
                                             {{$cat->nome}}
                                         </a>

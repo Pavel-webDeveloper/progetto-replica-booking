@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+// importo schema per utilizzare il model category nella funzione boot solo se esiste la tabella nel database
+use Illuminate\Support\Facades\Schema;
 use App\Category;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('listaCategorie', Category::all());
+
+        if (Schema::hasTable('categories')) {
+            $tutteCategorie = Category::all();
+            View::share('listaDiCategorie', $tutteCategorie);
+        }
     }
 }

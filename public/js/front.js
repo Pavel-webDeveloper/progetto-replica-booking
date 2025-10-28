@@ -49661,7 +49661,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\UTENTE\Desktop\Pavel\developer\corso_boolean\2_Back_end\php\Framework\Laravel\progetto-finale-booking\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\pavel\Desktop\dev\2_back-end\PHP\framework\Laravel\progetti\progetto-replica-booking\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
